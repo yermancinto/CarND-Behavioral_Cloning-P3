@@ -36,8 +36,7 @@ Images are trimmed to focus the model on the road:
 
 Images are converted from BGR to RGB on the training proccess:
 
-
-
+![read](https://user-images.githubusercontent.com/41348711/45601862-fdccc300-ba13-11e8-93a5-fdf5b5691930.JPG)
 
 Left and right images are included in the training with a 0,3 correction factor (+0,3 for left images and -0,3 for the right ones) to help teach the car to return to the middle of the road.
 
