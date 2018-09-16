@@ -7,7 +7,7 @@ My project includes the following files:
 * BC15.py containing the script to create and train the model
 * drive2.py for driving the car in autonomous mode
 * model.h15 containing a trained convolution neural network
-* writeup_report.md or writeup_report.pdf summarizing the results
+* This writeup summarizing the results
 
 
 ### Data acquisition
@@ -19,8 +19,8 @@ The quality of the data used to train the model will determine how well it predi
 * I got 4 complete laps on the main track. The data set us huge, takes hours training the model with all the data so in my last trials I realized than using 50% of these data is enough to have good results. 
 
 * driving_log has 29258 lines, that means the size of the data set is 87774 images (29258x3)
-* The size of test_set is 50% (43887 images)
-* The size of test_set is 50% (43887 images)
+* The size of train_set is 50% (43887 images)
+* The size of test_set is 5% (4388 images)
 
 
 
@@ -29,15 +29,14 @@ The quality of the data used to train the model will determine how well it predi
 
 #### 1. Augment the existing data Set:
 
-
-
+My last dataset was big enough so I had no need to augment it. 
+On my previous attemps I flipped the images and used x(-1) factor on the steering angle, but the results were not so good as I expected, so I dismissed this approach.
 
 #### 2. Process the images:
 
-1. The data process follows below structure:
-* Convert the image into greyscale (cv2.cvtColor)
-* Normalize the image to have zero mean values and equal variance (cv2.normalize)
-* Apply CLAHE histogram Equalization (cv2.createCLAHE)
+Images are trimmed to focus the model on the road:
+
+
 
 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
