@@ -10,63 +10,26 @@ My project includes the following files:
 * writeup_report.md or writeup_report.pdf summarizing the results
 
 
-### Data Set Summary & Exploration
+### Data acquisition
 
-#### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+The quality of the data used to train the model will determine how well it predicts the steering angle:
 
-I used the numpy library to calculate summary statistics of the traffic
-signs data set:
+* I trained the model using the mouse instead the keyboard, with soft and contnious angle changes.
+* Vehicle was driven at around constant 9kph speed, as the simulator does.
+* I got 4 complete laps on the main track. The data set us huge, takes hours training the model with all the data so in my last trials I realized than using 50% of these data is enough to have good results. 
 
-* The size of training set is 34799 images
-* The size of the validation set is 4410 images
-* The size of test set is 12630 images
-* The shape of each traffic sign image is (32,32,3)
-* The number of unique classes/labels in the data set is 43
+* driving_log has 29258 lines, that means the size of the data set is 87774 images (29258x3)
+* The size of test_set is 50% (43887 images)
+* The size of test_set is 50% (43887 images)
 
-See below the histograms for the trainning, validation and test datasets respectively:
-![imagen](https://user-images.githubusercontent.com/41348711/43163666-197b21d2-8f8f-11e8-87a3-e42136425f70.png)
-There are hudge differences in the naumber of samples of each traffic sign. Logic tells me that the more numerous, better trained the model for that specific traffic sign, so in the next step. Less numerous classes will (...) 
 
-#### 2. Include an exploratory visualization of the dataset
-I added some lines of code to plot 5 signals of each type so I can understand better the handicap my NN has to deal with. It is a slow process so I just showed below 5 traffic sign samples that summarize the whole dataset. The complete image matrix can be found under the *.html file.   
 
-50kph speed limit:
-![imagen](https://user-images.githubusercontent.com/41348711/43152871-038a6410-8f70-11e8-93b9-66204018ef3e.png)
-60kph speed limit: (even if you can not see the last two images are there...)
-![imagen](https://user-images.githubusercontent.com/41348711/43153037-759d6b42-8f70-11e8-83ee-b973d7e882fc.png)
-Bicycles crossing:
-![imagen](https://user-images.githubusercontent.com/41348711/43153653-2734be36-8f72-11e8-9cbc-8053fa48598b.png)
-Be aware (ice/snow):
-![imagen](https://user-images.githubusercontent.com/41348711/43153788-8b521134-8f72-11e8-9e2d-5bfec22c9f52.png)
-Turn left ahead:
-![imagen](https://user-images.githubusercontent.com/41348711/43154025-39a854d2-8f73-11e8-8f03-d36b40882c6a.png)
-
-From this first exploration we can extract the main problems our model will face:
-* High brightness images
-* Low contrast images
-* Blurred images
-* Signs covered by trees or other objects
-* Different sizing
-* Some of them are in perspective view or slightly rotated
-* Pieces of other traffic signs in the same picture
 
 ### Design and Test a Model Architecture
 
 #### 1. Augment the existing data Set:
 
-As the Trainning Data Set Histogram shows high differences in the number of samples, modified images are generated using the existing ones as a base. To do so , my code stores the images for every class in a temporal array and then runs a function to randomly generate modified images from the existing ones. The code just generates the images needed to match the larger class (in this case the class no.2 -> Speed limit 50kph)
 
-The function follow the different steps: 
-
-1. Get a random image from previously mentioned array.
-2. Apply a 3x3 Kernel 0-Standard variation Gaussian Blurring. Based on some trials and errors.
-2. Apply a random translation. Just up to +-2 pixels on X and Y axis. Those 2 pixels came as a result of some images results.
-3. Apply a random image rotation (uo to +-6 degrees) using cv2.getRotationMatrix2D tool. A higher angles results on too artificial rotations
-4. Apply a perspective view transformation using cv2.getAffineTransform. Parameters were tunned based on experience.
-
-At the end of this process, 51631 images are generated and stored as X_Train Data Set
-
-Extra training data set is concatenated with the existing one and whole datset is pickled. I did not how to pickle data so for this part I copied the code from internet
 
 
 #### 2. Process the images:
@@ -101,9 +64,9 @@ My final model consisted of the following layers:
 | Fully connected		|  output=1  	|	
 
 * LOSS:  mean square error
-* GENERATOR: Batch size=32 ; 20% train_size (); 5% test_size()
-* EPOCHS = 3
-* BATCH_SIZE = 128
+* GENERATOR: Batch size=32 ; 50% train_size (43887 images); 5% test_size(4388 images)
+* EPOCHS = 5
+
 * mu = 0
 * sigma = 0.01
 * dropout=0.7
