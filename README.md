@@ -1,4 +1,4 @@
-# SDCND_Behavioral-Cloning
+# SDCND_Behavioral Cloning
 
 My project includes the following files:
 
