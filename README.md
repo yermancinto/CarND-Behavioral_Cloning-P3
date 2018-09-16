@@ -84,26 +84,25 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 65x320x3 image| 
-| Convolution2D     	| 24 filters , 5x5 kernel size, strides = (2,2) RELU activ.function 	|
+| Convolution2D     	| 24 filters , 5x5 kernel size, strides = (2,2), RELU activ.function 	|
 | Dropout			|	25%											|
-| Convolution2D     	| 36 filters 5x5 2x2 stride RELU activ.function 	|
+| Convolution2D     	| 36 filters , 5x5 kernel size, strides = (2,2), RELU activ.function 	|
 | Dropout			|	25%											|
+| Convolution2D     	| 48 filters , 5x5 kernel size, strides = (2,2), RELU activ.function 	|
+| Dropout			|	25%											|
+| Convolution2D     	| 64 filters , 3x3 kernel size, strides = (1,1), RELU activ.function 	|
+| Dropout			|	25%											|
+| Convolution2D     	| 64 filters , 3x3 kernel size, strides = (1,1), RELU activ.function 	|
+| Dropout			|	25%											|
+| Flatten		|										|
+| Fully connected		|  output=100 , 5% - l2 regularizer    	|	
+| Fully connected		|  output=50 , 5% - l2 regularizer    	|	
+| Fully connected		|  output=10 , 5% - l2 regularizer    	|	
+| Fully connected		|  output=1  	|	
 
-| Max pooling	      	| 2x2 stride,  valid padding,  outputs 14x14x6 	|
-| Convolution 5x5	    | 1x1 stride, valid padding, outputs 10x10x6 	|
-| RELU	activ. fucntion				|			
-| Max pooling	      	| 2x2 stride,  valid padding,  outputs 5x5x16 	|
-| Flatten				|
-| Fully connected		|         							outputs 120		|
-| RELU	activ. fucntion				|		
-| Dropout				|	0.5 |	
-| Fully connected		|         							outputs 84		|
-| RELU	activ. fucntion				|		
-| Fully connected		|         							outputs 43		|	
-
-3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-The hyperparameters used to train my model are:
-* EPOCHS = 120
+* LOSS:  mean square error
+* GENERATOR: Batch size=32 ; 20% train_size (); 5% test_size()
+* EPOCHS = 3
 * BATCH_SIZE = 128
 * mu = 0
 * sigma = 0.01
