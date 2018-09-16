@@ -4,9 +4,9 @@ Project 3
 
 My project includes the following files:
 
-* BC15.py containing the script to create and train the model
+* BC16.py containing the script to create and train the model
 * drive2.py for driving the car in autonomous mode
-* model.h15 containing a trained convolution neural network
+* model.h16 containing a trained convolution neural network
 * This writeup summarizing the results
 
 
@@ -19,7 +19,7 @@ The quality of the data used to train the model will determine how well it predi
 * I got 4 complete laps on the main track. The data set us huge, takes hours training the model with all the data so in my last trials I realized than using 50% of these data is enough to have good results. 
 
 * driving_log has 29258 lines, that means the size of the data set is 87774 images (29258x3)
-* The size of train_set is 50% (43887 images)
+* The size of train_set is 10% (8777 images)
 * The size of test_set is 5% (4388 images)
 
 
@@ -35,6 +35,13 @@ On my previous attemps I flipped the images and used x(-1) factor on the steerin
 Images are trimmed to focus the model on the road:
 
 ![trimmed_image](https://user-images.githubusercontent.com/41348711/45599921-5a1fea80-b9f4-11e8-84c6-6c63547f8bc8.JPG)
+
+Images are converted from BGR to RGB on the training proccess:
+
+
+
+
+Left and right images are included in the training with a 0,3 correction factor (+0,3 for left images and -0,3 for the right ones) to help teach the car to return to the middle of the road.
 
 #### 3. Model architecture:
 
@@ -71,10 +78,12 @@ My final model results were:
 * Test loss of 95.0%
 
 
-First architecture I choosed for the project was the LeNet. After tunning this model I was never able to drive autonomously beyond the stone bridge. 
+First architecture I choosed for the project was LeNet. After tunning this model I was never able to drive autonomously beyond the stone bridge. 
 Using the Nvidia model without any regularization technique results improved, the loss was reduced but still had overfitting problems. Furthermore the car was not able to run a complete lap autonmously.
 25% Dropout was added to avoid overfitting after every 2D convolution layer
 5% l2 regularizer was added for every fully connected layer
+
+Using the model.h16 model in the simulator the vehicle runs pretty good in all the sections of the track
 
 
 
