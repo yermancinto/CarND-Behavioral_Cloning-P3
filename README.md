@@ -1,7 +1,5 @@
 # SDCND_Behavioral-Cloning
 
-Project 3
-
 My project includes the following files:
 
 * BC16.py containing the script to create and train the model
