@@ -36,10 +36,7 @@ On my previous attemps I flipped the images and used x(-1) factor on the steerin
 
 Images are trimmed to focus the model on the road:
 
-
-
-2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
+![trimmed_image](https://user-images.githubusercontent.com/41348711/45599921-5a1fea80-b9f4-11e8-84c6-6c63547f8bc8.JPG)
 
 My final model consisted of the following layers:
 
@@ -64,12 +61,8 @@ My final model consisted of the following layers:
 
 * LOSS:  mean square error
 * GENERATOR: Batch size=32 ; 50% train_size (43887 images); 5% test_size(4388 images)
-* EPOCHS = 5
+* EPOCHS = 3
 
-* mu = 0
-* sigma = 0.01
-* dropout=0.7
-* rate=0.0001  (low learning rate but better convergence)
 
 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
