@@ -65,20 +65,22 @@ My final model consisted of the following layers:
 
 * LOSS:  mean square error
 * GENERATOR: Batch size=32 ; 50% train_size (43887 images); 5% test_size(4388 images)
-* EPOCHS = 3
+* EPOCHS = 3 (higher epochs did not bring any improvement)
 
 #### 4. Results
 
 My final model results were:
 
-* Training loss of  99.6%
-* Test loss of 95.0%
+* Training loss of  0.0221
+* Test loss of 0.0207
+
+![bc16_results](https://user-images.githubusercontent.com/41348711/45639797-3bcbf480-bab1-11e8-8018-582eacfe46ce.JPG)
 
 
 First architecture I choosed for the project was LeNet. After tunning this model I was never able to drive autonomously beyond the stone bridge. 
 Using the Nvidia model without any regularization technique results improved, the loss was reduced but still had overfitting problems. Furthermore the car was not able to run a complete lap autonmously.
-25% Dropout was added to avoid overfitting after every 2D convolution layer
-5% l2 regularizer was added for every fully connected layer
+
+25% Dropout was added to avoid overfitting after every 2D convolution layer. After that, % l2 regularizer was added for every fully connected layer.
 
 Using the model.h16 model in the simulator the vehicle runs pretty good in all the sections of the track
 
